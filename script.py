@@ -1,5 +1,6 @@
 import pandas as pd
 import re
+from tabulate import tabulate
 
 # 0 = US
 # 1-52 = all states and territories
@@ -63,6 +64,9 @@ for (label, df) in dataframes.items():
     # Pretty print percentage.
     df['Percent'] = df['Percent'].map('{:,.2f}%'.format)
 
+    print("### {}".format(label))
+    print("{} adult speakers".format(n))
     print()
-    print("{} ({} adult speakers)".format(label, n))
-    print(df)
+    report = tabulate(df, df.columns, "pipe")
+    print(report)
+    print()
