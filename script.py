@@ -56,7 +56,7 @@ for (label, df) in dataframes.items():
     df = df[df['Language'].str.len() < 18]
 
     # Drop duplicates.
-    df = df.drop_duplicates()
+    df = df.drop_duplicates('Language')
 
     # Narrow down to top 10.
     df = df.head(10)
